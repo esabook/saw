@@ -1,0 +1,13 @@
+D:\New folder\SAW\SAW\obj\Debug\SAW.vbprojResolveAssemblyReference.cache
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_beranda.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_kompetensi.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_hasiltes.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_olahJurusan.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_subkriteria.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_kriteria.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_login.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_pembobotan.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_siswa.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_Subkompetensi.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.Fr_SAW.resources
+D:\New folder\SAW\SAW\obj\Debug\SAW.vbproj.GenerateResource.Cache
