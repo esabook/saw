@@ -93,7 +93,7 @@ Public Class C_database
         Return r > 0
     End Function
     Public Function QueryTable(ByRef QueryString As String) As DataTable
-        Debug.Print("tabel " + QueryString)
+        'Debug.Print("tabel " + QueryString)
         dataAdapter = New OleDbDataAdapter(QueryString, koneksiDB)
         DBCBuilder = New OleDbCommandBuilder(dataAdapter)
 
@@ -120,8 +120,6 @@ Public Class C_database
 
     End Function
     Public Function QueryStr(ByRef QueryString As String) As String
-        Debug.Print("Str " + QueryString)
-
         Dim s As String = ""
         DBCommand = New OleDbCommand(QueryString, koneksiDB)
         open()
@@ -130,6 +128,7 @@ Public Class C_database
             dr.Read()
             s = dr(0)
         End If
+        close()
         Return s
     End Function
     Private Function open() As OleDbConnection

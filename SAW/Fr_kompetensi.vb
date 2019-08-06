@@ -8,7 +8,7 @@
     End Sub
 
     Private Sub tx(sender As Object, e As EventArgs)
-        If db.QueryTable("select * from kompetensi where nama='" + bd_bid.Text + "' and id_kompetensi<>'" + bd_idbid.Text + "'").Rows.Count > 0 Then
+        If db.QueryTable("select id_kompetensi as [ID KOMPETENSI], kode_jurusan as [KODE JURUSAN], NAMA from kompetensi where nama='" + bd_bid.Text + "' and id_kompetensi<>'" + bd_idbid.Text + "'").Rows.Count > 0 Then
             ErrorProvider1.SetError(sender, "Nama Sudah Ada")
             valid = False
 
@@ -22,7 +22,7 @@
     Private Sub cx(sender As Object, e As DataGridViewCellEventArgs) Handles dgV.CellClick
         bd_idbid.Text = dgV.CurrentRow.Cells(0).Value
         bd_bid.Text = dgV.CurrentRow.Cells(2).Value
-        dgW.DataSource = db.QueryDS("select * from sub_kompetensi where id_kompetensi='" + dgV.CurrentRow.Cells(0).Value + "'")
+        dgW.DataSource = db.QueryDS("select sk.id_sub_kompetensi as [ID],  k.nama as [NAMA KOMPETENSI], sk.NAMA from sub_kompetensi as sk inner join kompetensi as k on k.id_kompetensi=sk.id_kompetensi where sk.id_kompetensi='" + dgV.CurrentRow.Cells(0).Value + "'")
 
     End Sub
 
@@ -50,7 +50,7 @@
     Private Sub isi()
 
         '    bd_bid.Items.Clear()
-        dgV.DataSource = db.QueryDS("select * from kompetensi where kode_jurusan='" + dt(0) + "'")
+        dgV.DataSource = db.QueryDS("select id_kompetensi as [ID KOMPETENSI], kode_jurusan as [KODE JURUSAN], NAMA from kompetensi where kode_jurusan='" + dt(0) + "'")
         '    For Each r As DataRow In db.QueryTable("select nama from kompetensi where kode_jurusan='" + dt(0) + "'").Rows
         '        bd_bid.Items.Add(r(0))
         '    Next

@@ -13,7 +13,15 @@ Public Class Fr_SAW
     Dim s As String, t As String
     Public dt() As Object
 
+    Public Sub setFilter(ByRef tahunMin As Double, ByRef tahunMax As Double, ByRef peringkat As Double)
+        i_tahun_min.Value = tahunMin
+        i_tahun_max.Value = tahunMax
+        i_peringkat.Value = peringkat
+    End Sub
 
+    Public Sub showFilter(ByRef bool As Boolean)
+        panel_filter.Visible = bool
+    End Sub
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton6.CheckedChanged, RadioButton4.CheckedChanged, RadioButton2.CheckedChanged, RadioButton1.CheckedChanged
 
         dgview.DataSource = Nothing
@@ -113,7 +121,7 @@ Public Class Fr_SAW
             Label2.Visible = True
         Catch
         End Try
-        db.QueryIUD("insert into hasil_pemilihan (id_hasil_pemilihan, nis, nilai_hasil) values ('" + db.IDBaruBerdasarTabel(db.tabel_HasilP) + "','" + mx_hasilAkhir.Rows.Item(0).Item(0) + "','" + mx_hasilAkhir.Rows.Item(0).Item(2) + "')")
+        db.QueryIUD("insert into hasil_pemilihan (id_hasil_pemilihan, nis, nilai_hasil) values ('" + db.IDBaruBerdasarTabel(db.tabel_HasilP) + "','" + mx_hasilAkhir.Rows.Item(0).Item(0) + "','" + mx_hasilAkhir.Rows.Item(0).Item(2).ToString() + "')")
         Button2_Click(sender, e)
     End Sub
     Private Sub isiKOm()
@@ -132,7 +140,6 @@ Public Class Fr_SAW
 
     Private Sub Fr_SAW_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Text &= "- " & IIf(dt(3) = 1, "Ketua Jurusan", "Wali Kelas") & " " & dt(1)
-        reset()
         isiKOm()
         kom_SelectedIndexChanged(Nothing, Nothing)
         Me.dgview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
@@ -141,12 +148,14 @@ Public Class Fr_SAW
         Me.dgview.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         'AddHandler mx_hasilAkhir.en, AddressOf refr
 
+        AddHandler i_peringkat.ValueChanged, AddressOf filter_changed
+        AddHandler i_tahun_min.ValueChanged, AddressOf filter_changed
+        AddHandler i_tahun_max.ValueChanged, AddressOf filter_changed
     End Sub
 
 
     Private Sub reset()
         Try
-            thn.Value = Now.Year
             dgview.DataSource = Nothing
             mx_awal_nilaiHasil.Clear()
             mx_awal_bobotHasil.Clear()
@@ -245,10 +254,18 @@ Public Class Fr_SAW
     End Function
 
     Private Sub awal()
+        Dim batasAtasPeringkat = i_peringkat.Value.ToString,
+            tahunMin = i_tahun_min.Value.ToString,
+            tahunMax = i_tahun_max.Value.ToString
+
         If SplitContainer1.Panel1Collapsed Then
-            mx_awal_nilaiHasil = db.QueryTable(VERTkeHORZ_hasiltes(k.ToArray, " where (s.tahun=" & thn.Value & ") and (s.kode_kompetensi=" + stringbcnfsub("s.kode_kompetensi") + " or s.kode_kompetensi=" + stringbcnfko("s.kode_kompetensi") + " or  s.kode_kompetensi='" + dt(0) + "')"))
+            mx_awal_nilaiHasil = db.QueryTable(VERTkeHORZ_hasiltes(k.ToArray,
+                                                                   " where (peringkat between 0 and " + batasAtasPeringkat + " and tahun_ajaran between " + tahunMin + " and " + tahunMax + " ) 
+                                                                   and (s.kode_kompetensi=" + stringbcnfsub("s.kode_kompetensi") + " or s.kode_kompetensi=" + stringbcnfko("s.kode_kompetensi") + " or  s.kode_kompetensi='" + dt(0) + "')"))
         Else
-            mx_awal_nilaiHasil = db.QueryTable(VERTkeHORZ_hasiltes(k.ToArray, " where (s.tahun=" & thn.Value & ") and (s.kode_kompetensi=" + stringbcnfsub("s.kode_kompetensi") + " or s.kode_kompetensi='" + s + "')"))
+            mx_awal_nilaiHasil = db.QueryTable(VERTkeHORZ_hasiltes(k.ToArray,
+                                                                   " where (peringkat between 0 and " + batasAtasPeringkat + " and tahun_ajaran between " + tahunMin + " and " + tahunMax + " )
+                                                                   and (s.kode_kompetensi=" + stringbcnfsub("s.kode_kompetensi") + " or s.kode_kompetensi='" + s + "')"))
         End If
     End Sub
 
@@ -266,19 +283,10 @@ Public Class Fr_SAW
         Me.dgview.Invalidate(rtHeader)
     End Sub
 
-    Private Sub thn_ValueChanged(sender As Object, e As EventArgs) Handles thn.ValueChanged
-        Try
-            awal()
-            dgview.DataSource = Nothing
-            dgview.DataSource = mx_awal_nilaiHasil
-        Catch ex As Exception
-
-        End Try
+    Private Sub filter_changed(sender As Object, e As EventArgs)
+        kom_SelectedIndexChanged(Nothing, Nothing)
     End Sub
 
-    Private Sub dgview_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgview.CellContentClick
-
-    End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs)
         Try
@@ -288,8 +296,6 @@ Public Class Fr_SAW
             Dim txnm As TextObject = crr.ReportDefinition.ReportObjects.Item("jurnm")
             Dim ha As TextObject = crr.ReportDefinition.ReportObjects.Item("ha")
             Dim tgl As TextObject = crr.ReportDefinition.ReportObjects.Item("tgl")
-            Dim tlks As TextObject = crr.ReportDefinition.ReportObjects.Item("TLks")
-            tlks.Text = thn.Value
             tx.Text = IIf(SplitContainer1.Panel1Collapsed, dt(0), dt(0) & " / " & s)
             txnm.Text = IIf(SplitContainer1.Panel1Collapsed, dt(1), dt(1) & " / " & t.Substring(1))
             ha.Text = Label2.Text
@@ -373,8 +379,9 @@ Public Class Fr_SAW
             Catch
             End Try
         Next
+
         Try
-            mx_hasilAkhir.Columns.Add("HASIL")
+            mx_hasilAkhir.Columns.Add("HASIL", New Double.GetType())
         Catch
         End Try
         Dim d As DataRow
@@ -393,6 +400,7 @@ Public Class Fr_SAW
             mx_hasilAkhir.Rows.Add(d)
         Next
         mx_hasilAkhir.DefaultView.Sort = "HASIL DESC"
+
         mx_hasilAkhir = mx_hasilAkhir.DefaultView.ToTable
 
         '''''''''''''''''''''''''''''mx_hasilAkhir.Columns.Item(2).ColumnName = "HASIL AKHIR"

@@ -29,8 +29,14 @@ Partial Class Fr_login
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.dgV = New System.Windows.Forms.DataGridView()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.query = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.dgV, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -91,6 +97,62 @@ Partial Class Fr_login
         Me.ComboBox1.Size = New System.Drawing.Size(225, 21)
         Me.ComboBox1.TabIndex = 0
         '
+        'dgV
+        '
+        Me.dgV.AllowUserToDeleteRows = False
+        Me.dgV.AllowUserToResizeRows = False
+        Me.dgV.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(245, Byte), Integer))
+        Me.dgV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgV.Location = New System.Drawing.Point(396, 12)
+        Me.dgV.Name = "dgV"
+        Me.dgV.ReadOnly = True
+        Me.dgV.RowHeadersVisible = False
+        Me.dgV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgV.Size = New System.Drawing.Size(306, 177)
+        Me.dgV.TabIndex = 11
+        Me.dgV.TabStop = False
+        '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer))
+        Me.Button4.ForeColor = System.Drawing.Color.White
+        Me.Button4.Location = New System.Drawing.Point(711, 190)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(50, 28)
+        Me.Button4.TabIndex = 13
+        Me.Button4.TabStop = False
+        Me.Button4.Text = "+"
+        Me.ToolTip1.SetToolTip(Me.Button4, "Tambah dan Simpan")
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'query
+        '
+        Me.query.Location = New System.Drawing.Point(396, 195)
+        Me.query.Name = "query"
+        Me.query.Size = New System.Drawing.Size(306, 20)
+        Me.query.TabIndex = 14
+        Me.query.TabStop = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(393, 218)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(266, 26)
+        Me.Label3.TabIndex = 15
+        Me.Label3.Text = "Format  : Kode_Jurusan; Nama; Kode_Masuk; Jabatan" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Misal : U; UPW; 112345; 1"
+        Me.ToolTip1.SetToolTip(Me.Label3, "Isi sesuai format atau perintah SQL ACCESS, Jika menngunakan SQL gunakan tombol E" &
+        "NTER untuk eksekusi.")
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(708, 12)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(53, 39)
+        Me.Label4.TabIndex = 16
+        Me.Label4.Text = "Jabatan:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "1 = Ketua" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "2 = Wali"
+        '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.SAW.My.Resources.Resources.logo
@@ -108,8 +170,13 @@ Partial Class Fr_login
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.CancelButton = Me.Button1
-        Me.ClientSize = New System.Drawing.Size(322, 352)
+        Me.ClientSize = New System.Drawing.Size(331, 352)
         Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.query)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.dgV)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
@@ -118,7 +185,9 @@ Partial Class Fr_login
         Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Fr_login"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login "
+        CType(Me.dgV, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -131,6 +200,11 @@ Partial Class Fr_login
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents dgV As DataGridView
+    Friend WithEvents Button4 As Button
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents query As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
     Friend WithEvents PictureBox1 As PictureBox
 End Class

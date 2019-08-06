@@ -26,7 +26,9 @@
     Private Sub cy(sender As Object, e As DataGridViewCellEventArgs) Handles dgK.CellClick
 
 
-        dgSk.DataSource = db.QueryDS("select id_sub_kriteria as ID, id_kriteria  as KRITERIA, NAMA, bobot from sub_kriteria where id_kriteria='" + dgK.CurrentRow.Cells(0).Value + "'")
+        dgSk.DataSource = db.QueryDS("select sk.id_sub_kriteria as ID, k.nama  as [NAMA KRITERIA], sk.NAMA as [NILAI], sk.BOBOT 
+from sub_kriteria  as sk inner join kriteria as k on k.id_kriteria=sk.id_kriteria  
+where sk.id_kriteria='" + dgK.CurrentRow.Cells(0).Value + "'")
         Try
             k_id.Text = dgK.CurrentRow.Cells(0).Value
 
@@ -55,7 +57,19 @@
         edit(False)
     End Sub
     Private Function tbelkriteria(jurusan As String, filter As String) As String
-        Return "SELECT  k.id_kriteria as [ID], k.bcnf as [KOMPETENSI/SUB KOMPETENSI], k.nama as NAMA   from kriteria as k where " & IIf(filter Is Nothing, "", filter + " and ") & " (bcnf=(select id_sub_kompetensi from sub_kompetensi as sb inner join kompetensi as b on sb.id_kompetensi=b.id_kompetensi where b.kode_jurusan='" + jurusan + "' and sb.id_sub_kompetensi=k.bcnf ) or bcnf=(select id_kompetensi from kompetensi where id_kompetensi=k.bcnf and kode_jurusan='" + jurusan + "'))"
+        Return "SELECT  k.id_kriteria as [ID], k.bcnf as [KOMPETENSI/SUB KOMPETENSI], k.nama as NAMA,   
+
+ko.id_kompetensi as [ID KOMPETENSI],
+ko.nama as [NAMA KOMPETENSI],
+sko.id_sub_kompetensi as [ID SUB KOMPETENSI],
+sko.nama as [NAMA SUB KOMPETENSI]
+from kriteria as k 
+
+inner join
+(select *  from kompetensi as ko inner join sub_kompetensi as sko on sko.id_kompetensi=ko.id_kompetensi) as sk 
+on sk.sko.id_sub_kompetensi=k.bcnf or sk.ko.id_kompetensi=k.bcnf 
+
+where " & IIf(filter Is Nothing, "", filter + " and ") & " (bcnf=(select id_sub_kompetensi from sub_kompetensi as sb inner join kompetensi as b on sb.id_kompetensi=b.id_kompetensi where b.kode_jurusan='" + jurusan + "' and sb.id_sub_kompetensi=k.bcnf ) or bcnf=(select id_kompetensi from kompetensi where id_kompetensi=k.bcnf and kode_jurusan='" + jurusan + "'))"
     End Function
     Private Function tbelkriteria(jurusan As String) As String
         Return tbelkriteria(jurusan, Nothing)
@@ -95,6 +109,20 @@
     Private Sub bd_ubh_Click(sender As Object, e As EventArgs) Handles k_ubh.Click
         edit(True)
         ub = ubah.ubah
+
+        For Each s As String In k_bid.Items
+            If s.Contains(k_bid.Text) Then
+                k_bid.SelectedItem = s
+                Exit For
+            End If
+        Next
+
+        For Each s As String In k_sb.Items
+            If s.Contains(k_sb.Text) Then
+                k_sb.SelectedItem = s
+                Exit For
+            End If
+        Next
     End Sub
 
     Private Sub bd_hps_Click(sender As Object, e As EventArgs) Handles k_hps.Click
@@ -115,6 +143,7 @@
             End If
 
             isi()
+            dgK.PerformLayout()
             k_btl.PerformClick()
         Else
             MessageBox.Show("Ada yang belum lengkap.")

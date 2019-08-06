@@ -17,8 +17,6 @@
         ' If ub = ubah.baru Then k_nm.Enabled = boo Else k_nm.Enabled = False
         sk_nm.Enabled = boo
         sk_nil.Enabled = boo
-        raw.Enabled = boo
-        rak.Enabled = boo
         'NUM1.Enabled = boo
         'NUM2.Enabled = boo
         dgK.Enabled = Not boo
@@ -31,7 +29,7 @@
         k_btl.Enabled = boo
     End Sub
 
-    Private Sub cy(sender As Object, e As DataGridViewCellEventArgs) Handles dgK.CellClick
+    Private Sub cy(sender As Object, e As DataGridViewCellEventArgs) Handles dgK.CellClick, dgK.CellEnter
 
         Try
             k_nm.Text = dgK.CurrentRow.Cells(0).Value
@@ -39,8 +37,6 @@
             ' NUM2.ResetText()
             ' NUM1.ResetText()
             sk_nil.Value = 0
-            rak.Value = 0
-            raw.Value = 0
             sk_nm.ResetText()
 
         Catch
@@ -48,22 +44,20 @@
         ISISUBKRITERIA()
     End Sub
     Private Sub ISISUBKRITERIA()
-        dgSk.DataSource = db.QueryDS("select id_sub_kriteria as ID, id_kriteria  as KRITERIA, NAMA, BOBOT, nilai_rentang as RENTANG from sub_kriteria where id_kriteria='" + dgK.CurrentRow.Cells(0).Value + "'")
+        dgSk.DataSource = db.QueryDS("select sk.id_sub_kriteria as ID, sk.id_kriteria as [ID KRITERIA], k.nama  as [NAMA KRITERIA], sk.NAMA as [NILAI], sk.BOBOT 
+from sub_kriteria  as sk inner join kriteria as k on k.id_kriteria=sk.id_kriteria  
+where sk.id_kriteria='" + dgK.CurrentRow.Cells(0).Value + "'")
 
     End Sub
-    Private Sub cyK(sender As Object, e As DataGridViewCellEventArgs) Handles dgSk.CellClick
+    Private Sub cyK(sender As Object, e As DataGridViewCellEventArgs) Handles dgSk.CellClick, dgSk.CellEnter
         'Try
         sk_id.Text = dgSk.CurrentRow.Cells(0).Value
-        sk_nm.Text = dgSk.CurrentRow.Cells(2).Value
         k_nm.Text = dgSk.CurrentRow.Cells(1).Value
+        sk_nm.Text = dgSk.CurrentRow.Cells(3).Value
         'NUM1.Value = IIf(IsNumeric(dgSk.CurrentRow.Cells(3).Value), dgSk.CurrentRow.Cells(3).Value, 0)
         'NUM2.Value = IIf(IsNumeric(dgSk.CurrentRow.Cells(4).Value), dgSk.CurrentRow.Cells(4).Value, 0)
-        sk_nil.Value = IIf(IsNumeric(dgSk.CurrentRow.Cells(3).Value), dgSk.CurrentRow.Cells(3).Value, 0)
+        sk_nil.Value = IIf(IsNumeric(dgSk.CurrentRow.Cells(4).Value), dgSk.CurrentRow.Cells(4).Value, 0)
 
-        Dim nil() As String
-        nil = IIf(IsDBNull(dgSk.CurrentRow.Cells(4).Value), {"0", "0"}, dgSk.CurrentRow.Cells(4).Value.ToString.Split("-"))
-        raw.Value = nil(0)
-        rak.Value = nil(1)
 
         'Catch
         'End Try
@@ -77,8 +71,6 @@
         '  NUM1.ResetText()
         ' NUM2.ResetText()
         sk_nil.Value = 0
-        rak.Value = 0
-        raw.Value = 0
         isi()
         edit(False)
 
@@ -134,10 +126,10 @@
         If valid And sk_nil.Value > 0 Then
 
             If ub = ubah.baru Then
-                db.QueryIUD("insert into sub_kriteria (id_sub_kriteria, id_kriteria,nama, bobot, nilai_rentang) values ('" +
-                            sk_id.Text + "','" + k_nm.Text + "','" + sk_nm.Text + "','" & sk_nil.Value.ToString & "'," & raw.Value & "-" & rak.Value & ")")
+                db.QueryIUD("insert into sub_kriteria (id_sub_kriteria, id_kriteria,nama, bobot) values ('" +
+                            sk_id.Text + "','" + k_nm.Text + "','" + sk_nm.Text + "','" & sk_nil.Value.ToString & "')")
             Else
-                db.QueryIUD("UPDATE sub_kriteria set id_kriteria='" + k_nm.Text + "', nama='" + sk_nm.Text + "', bobot='" & sk_nil.Value.ToString & "', nilai_rentang='" & raw.Value & "-" & rak.Value & "' where id_sub_kriteria='" + sk_id.Text + "'")
+                db.QueryIUD("UPDATE sub_kriteria set id_kriteria='" + k_nm.Text + "', nama='" + sk_nm.Text + "', bobot='" & sk_nil.Value.ToString & "' where id_sub_kriteria='" + sk_id.Text + "'")
             End If
 
             ISISUBKRITERIA()
@@ -165,7 +157,7 @@
     End Sub
 
     Private Sub k_sb_SelectedIndexChanged(sender As Object, e As EventArgs) Handles sk_sb.SelectedIndexChanged
-        dgK.DataSource = db.QueryDS("select k.id_kriteria as [ID KRITERIA], k.bcnf as [kompetensi/Sub kompetensi], k.nama as NAMA from kriteria as k where bcnf='" + sk_sb.Text.Split(" - ")(0) + "'")
+        dgK.DataSource = db.QueryDS("select k.id_kriteria as [ID KRITERIA], k.bcnf as [KOMPETENSI/SUB KOMPETENSI], k.nama as NAMA from kriteria as k where bcnf='" + sk_sb.Text.Split(" - ")(0) + "'")
 
     End Sub
 
@@ -180,27 +172,6 @@
         End If
     End Sub
 
-    Private Sub raw_ValueChanged(sender As Object, e As EventArgs) Handles raw.ValueChanged, rak.ValueChanged
-        Dim st() As String
-        If rak.Value < raw.Value Then rak.Value = raw.Value
-
-        For Each ddd As DataRow In db.QueryTable("select nilai_rentang from sub_kriteria where id_kriteria='" & k_nm.Text & "'").Rows
-            st = IIf(IsDBNull(ddd.Item(0)), {"-1", "-1"}, ddd.Item(0).ToString.Split("-"))
-            Select Case sender.Value
-                Case CInt(st(0)) To CInt(st(1))
-                    ErrorProvider1.SetError(sender, "Nilai rentang " & sender.value & " merupakan nilai anggota dari nilai rentang sub-kriteria lain.")
-                    valid = False
-                Case Else
-                    ErrorProvider1.Clear()
-                    valid = True
-
-
-            End Select
-        Next
-    End Sub
-
-
-
     Private Sub bd_batal_Click(sender As Object, e As EventArgs) Handles k_btl.Click
         edit(False)
     End Sub
@@ -208,8 +179,19 @@
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles sk_reset.Click
         sk_sb.ResetText()
         sk_bid.ResetText()
-        dgK.DataSource = db.QueryDS("SELECT  k.id_kriteria as [ID KRITERIA], k.bcnf as [kompetensi/SUBkompetensi], k.nama as NAMA   " +
-            "from kriteria as k where bcnf = (select id_sub_kompetensi from sub_kompetensi as sb inner join kompetensi as b on sb.id_kompetensi=b.id_kompetensi where b.kode_jurusan='" + dt(0) + "' " +
+        dgK.DataSource = db.QueryDS("SELECT  k.id_kriteria as [ID KRITERIA], k.bcnf as [KOMPETENSI/SUB KOMPETENSI], k.nama as NAMA,
+
+ko.id_kompetensi as [ID KOMPETENSI],
+ko.nama as [NAMA KOMPETENSI],
+sko.id_sub_kompetensi as [ID SUB KOMPETENSI],
+sko.nama as [NAMA SUB KOMPETENSI]
+from kriteria as k 
+
+inner join
+(select *  from kompetensi as ko inner join sub_kompetensi as sko on sko.id_kompetensi=ko.id_kompetensi) as sk 
+on sk.sko.id_sub_kompetensi=k.bcnf or sk.ko.id_kompetensi=k.bcnf 
+
+where bcnf = (select id_sub_kompetensi from sub_kompetensi as sb inner join kompetensi as b on sb.id_kompetensi=b.id_kompetensi where b.kode_jurusan='" + dt(0) + "' " +
             "and sb.id_sub_kompetensi=k.bcnf ) " +
             "or bcnf = (select id_kompetensi from kompetensi where id_kompetensi=k.bcnf and kode_jurusan='" + dt(0) + "' )")
 

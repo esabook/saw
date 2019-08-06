@@ -41,9 +41,9 @@ Partial Class Fr_kompetensi
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.bd_bid = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.bd_bid = New System.Windows.Forms.TextBox()
         CType(Me.dgV, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgW, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,7 +114,7 @@ Partial Class Fr_kompetensi
         Me.dgV.ReadOnly = True
         Me.dgV.RowHeadersVisible = False
         Me.dgV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgV.Size = New System.Drawing.Size(352, 493)
+        Me.dgV.Size = New System.Drawing.Size(352, 506)
         Me.dgV.TabIndex = 10
         '
         'bd_tbh
@@ -176,7 +176,7 @@ Partial Class Fr_kompetensi
         Me.dgW.ReadOnly = True
         Me.dgW.RowHeadersVisible = False
         Me.dgW.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgW.Size = New System.Drawing.Size(467, 237)
+        Me.dgW.Size = New System.Drawing.Size(521, 250)
         Me.dgW.TabIndex = 15
         '
         'bd_batal
@@ -213,7 +213,7 @@ Partial Class Fr_kompetensi
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label3.Location = New System.Drawing.Point(3, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(467, 20)
+        Me.Label3.Size = New System.Drawing.Size(521, 20)
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "Tabel Data Sub kompetensi"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -230,7 +230,7 @@ Partial Class Fr_kompetensi
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(849, 525)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(903, 538)
         Me.TableLayoutPanel1.TabIndex = 19
         '
         'TableLayoutPanel2
@@ -246,7 +246,7 @@ Partial Class Fr_kompetensi
         Me.TableLayoutPanel2.RowCount = 2
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(479, 519)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(533, 532)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'Panel3
@@ -265,8 +265,15 @@ Partial Class Fr_kompetensi
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(3, 3)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(473, 244)
+        Me.Panel3.Size = New System.Drawing.Size(527, 244)
         Me.Panel3.TabIndex = 20
+        '
+        'bd_bid
+        '
+        Me.bd_bid.Location = New System.Drawing.Point(160, 103)
+        Me.bd_bid.Name = "bd_bid"
+        Me.bd_bid.Size = New System.Drawing.Size(240, 20)
+        Me.bd_bid.TabIndex = 18
         '
         'TableLayoutPanel4
         '
@@ -280,7 +287,7 @@ Partial Class Fr_kompetensi
         Me.TableLayoutPanel4.RowCount = 2
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(473, 263)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(527, 276)
         Me.TableLayoutPanel4.TabIndex = 21
         '
         'TableLayoutPanel3
@@ -295,21 +302,14 @@ Partial Class Fr_kompetensi
         Me.TableLayoutPanel3.RowCount = 2
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(358, 519)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(358, 532)
         Me.TableLayoutPanel3.TabIndex = 1
-        '
-        'bd_bid
-        '
-        Me.bd_bid.Location = New System.Drawing.Point(160, 103)
-        Me.bd_bid.Name = "bd_bid"
-        Me.bd_bid.Size = New System.Drawing.Size(240, 20)
-        Me.bd_bid.TabIndex = 18
         '
         'Fr_kompetensi
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(849, 525)
+        Me.ClientSize = New System.Drawing.Size(903, 538)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Fr_kompetensi"

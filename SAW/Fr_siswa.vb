@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub s_hps_Click(sender As Object, e As EventArgs) Handles s_hps.Click
-        db.QueryIUD("delete from siswa  where nis='" + s_nis.Text + "' and tahun =" & thn.Value & "")
+        db.QueryIUD("delete from siswa  where nis='" + s_nis.Text + "'")
         cl()
         fill()
     End Sub
@@ -44,15 +44,29 @@
         If kej.Enabled AndAlso kej.Text.Length < 1 Then MessageBox.Show("Silakan pilih kompetensi dahulu.") : Return
         Select Case md
             Case Mode.Baru
-                If db.QueryTable("select * from siswa where nis='" + s_nis.Text + "' and tahun=" & thn.Value & "").Rows.Count = 0 Then
+                If db.QueryTable("select * from siswa where nis='" + s_nis.Text + "'").Rows.Count = 0 Then
 
-                    db.QueryIUD("insert into siswa (nis, nama, alamat, kelamin, kode_kompetensi, kelas, tahun, peringkat) " +
-                        "values ('" + s_nis.Text + "','" + s_nm.Text + "','" + s_alm.Text + "','" + s_jk.Text + "','" + IIf(kej.Enabled, kej.Text, dt(0)) + "','" + s_kls.Text + "'," & thn.Value & "," & pr.Value & ")")
+                    db.QueryIUD("insert into siswa (nis, nama, alamat, kelamin, kode_kompetensi, kelas, tahun_ajaran, peringkat) " +
+                        "values ('" + s_nis.Text + "','" +
+                        s_nm.Text + "','" +
+                        s_alm.Text + "','" +
+                        s_jk.Text + "','" +
+                        IIf(kej.Enabled, kej.Text, dt(0)) + "','" +
+                        s_kls.Text + "','" +
+                        tahun_ajaran.Value.ToString + "','" +
+                        peringkat.Value.ToString + "')")
                 Else
-                    MessageBox.Show("NIS """ & s_nis.Text & """ pada tahun " & thn.Value & " sudah ada, operasi dibatalkan.")
+                    MessageBox.Show("NIS """ & s_nis.Text & """ sudah ada, operasi dibatalkan.")
                 End If
             Case Mode.Ubah
-                db.QueryIUD("update siswa set nama='" + s_nm.Text + "', alamat='" + s_alm.Text + "', kelamin='" + s_jk.Text + "', kode_kompetensi='" + IIf(kej.Enabled, kej.Text, dt(0)) + "', kelas='" + s_kls.Text + "', peringkat=" & pr.Value & ", tahun=" & thn.Value & " where nis='" + s_nis.Text + "' ")
+                db.QueryIUD("update siswa set nama='" + s_nm.Text +
+                            "', alamat='" + s_alm.Text +
+                            "', kelamin='" + s_jk.Text +
+                            "', kode_kompetensi='" + IIf(kej.Enabled, kej.Text, dt(0)) +
+                            "', kelas='" + s_kls.Text +
+                            "', tahun_ajaran='" + tahun_ajaran.Value.ToString +
+                            "', peringkat='" + peringkat.Value.ToString +
+                            "' where nis='" + s_nis.Text + "'")
         End Select
         modeedit(False)
         cl()
@@ -68,13 +82,12 @@
         s_nis.Clear()
         s_nm.Clear()
         s_alm.Clear()
-
-        thn.Value = Now.Year
-        pr.Value = 0
         s_jk.ResetText()
         If kej.Enabled Then kej.ResetText()
         'skej.ResetText()
         s_kls.Clear()
+        tahun_ajaran.Value = Now.Year
+        peringkat.Value = 0
     End Sub
 
     Private Sub dgvc(sender As Object, e As DataGridViewCellEventArgs) Handles dgV.CellClick, dgV.CellEnter
@@ -84,9 +97,8 @@
         s_jk.Text = dgV.CurrentRow.Cells(3).Value
         kej.Text = dgV.CurrentRow.Cells(4).Value
         s_kls.Text = dgV.CurrentRow.Cells(5).Value
-        thn.Value = IIf(IsDBNull(dgV.CurrentRow.Cells(6).Value), Now.Year, dgV.CurrentRow.Cells(6).Value)
-        pr.Value = IIf(IsDBNull(dgV.CurrentRow.Cells(7).Value), 0, dgV.CurrentRow.Cells(7).Value)
-
+        tahun_ajaran.Value = IIf(IsDBNull(dgV.CurrentRow.Cells(6).Value), Now.Year, dgV.CurrentRow.Cells(6).Value)
+        peringkat.Value = IIf(IsDBNull(dgV.CurrentRow.Cells(7).Value), 0, dgV.CurrentRow.Cells(7).Value)
     End Sub
 
     Private Sub modeedit(boo As Boolean)
@@ -94,19 +106,17 @@
         s_nm.Enabled = boo
         s_alm.Enabled = boo
         s_jk.Enabled = boo
-        thn.Enabled = boo
-        pr.Enabled = boo
-
-
         kej.Enabled = kej.Items.Count > 0 AndAlso boo
-
+        tahun_ajaran.Enabled = boo
+        peringkat.Enabled = boo
         s_kls.Enabled = boo
         S_filter.Enabled = Not boo
         s_filter2.Enabled = Not boo
         s_tbh.Enabled = Not boo
-        s_ubh.Enabled = Not boo
-        s_hps.Enabled = Not boo
+        s_ubh.Enabled = Not boo And s_nis.Text.Length > 0
+        s_hps.Enabled = Not boo And s_nis.Text.Length > 0
         s_sp.Enabled = boo
+        s_reset.Enabled = boo
 
         dgV.Enabled = Not boo
 
@@ -131,7 +141,7 @@
 
     Private Sub fill()
         If filter Then
-            dgV.DataSource = db.QueryDS(siswa(dt(0), S_filter.Text, s_filter2.Text, Nothing))
+            dgV.DataSource = db.QueryDS(siswa(dt(0), S_filter.Text, s_filter2.Text))
         Else
             'dgV.DataSource = db.QueryDS("select distinct s.* from (siswa as s inner join sub_kompetensi as sk on sk.id_sub_kompetensi=s.kode_kompetensi) " +
             '                            " inner join kompetensi as k on k.id_kompetensi=s.kode_kompetensi where k.kode_jurusan='" & dt(0) & "'")
@@ -139,25 +149,21 @@
         End If
         isiv()
     End Sub
-    Public Function siswa(jurusan As String, filterKolom As String, isiFilter As String, customQ As String) As String
+    Public Function siswa(jurusan As String, filterKolom As String, isiFilter As String) As String
         Dim ass = ""
         If filterKolom IsNot Nothing AndAlso filterKolom.Length > 0 Then
             ass &= " instr(" + filterKolom + ",'" + isiFilter + "')<>0 and "
 
         ElseIf isiFilter IsNot Nothing Then
-            ass &= "instr (nis&nama&alamat&kode_kompetensi&kelas&peringkat&tahun,'" + isiFilter + "')<>0 and "
+            ass &= "instr (nis&nama&alamat&kode_kompetensi&kelas,'" + isiFilter + "')<>0 and "
         End If
-        If customQ IsNot Nothing Then
-                ass &= " " & customQ & " and "
-            End If
-
-            Return "select  s.* from siswa as s where " + ass +
+        Return "select  s.* from siswa as s where " + ass +
                                       " (s.kode_kompetensi='" & jurusan & "' " +
                                       "or s.kode_kompetensi=(select id_kompetensi from kompetensi as k where k.id_kompetensi=s.kode_kompetensi and k.kode_jurusan='" & jurusan & "'))"
 
     End Function
     Public Function siswa(jurusan As String) As String
-        Return siswa(jurusan, Nothing, Nothing, Nothing)
+        Return siswa(jurusan, Nothing, Nothing)
     End Function
     Private Function idkompetensi(namakom, namasubkom) As String
         Dim kom = "true"

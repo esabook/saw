@@ -30,32 +30,18 @@
         tampil(f)
     End Sub
     Private Sub restitle()
-        If dt Is Nothing Then
-            Text = "Beranda Admin"
-        Else
-            Text = "Beranda - " & IIf(dt(3) = 1, "Ketua Jurusan", "Wali Kelas") & " " & dt(1)
-        End If
+        Text = "Beranda - " & IIf(dt(3) = 1, "Ketua Jurusan", "Wali Kelas") & " " & dt(1)
 
     End Sub
     Private Sub Fr_beranda_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If dt IsNot Nothing Then
-            Select Case dt(3)
-                Case 1
-                    SiswaToolStripMenuItem.Visible = False
-                    PerhitunganSAWToolStripMenuItem.Visible = False
-                Case 2
-                    BidangToolStripMenuItem.Visible = False
-                    KriteriaToolStripMenuItem.Visible = False
-            End Select
-            olahJur.Visible = False
-        Else
-            For Each dd As ToolStripMenuItem In MenuStrip1.Items
-                dd.Visible = False
-                olahJur.Visible = True
-                LoginJendelaBaruToolStripMenuItem.Visible = True
-            Next
-        End If
-
+        Select Case dt(3)
+            Case 1
+                SiswaToolStripMenuItem.Visible = False
+                PerhitunganSAWToolStripMenuItem.Visible = False
+            Case 2
+                BidangToolStripMenuItem.Visible = False
+                KriteriaToolStripMenuItem.Visible = False
+        End Select
         restitle()
     End Sub
     Public Sub dataLogin(ByVal dd() As Object)
@@ -107,10 +93,5 @@
             PictureBox1.Visible = True
         End If
         restitle()
-    End Sub
-
-    Private Sub olahJur_Click(sender As Object, e As EventArgs) Handles olahJur.Click
-        Dim f As New Fr_olahJurusan
-        tampil(f)
     End Sub
 End Class

@@ -150,77 +150,71 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_file\C_database.vb" />
-    <Compile Include="Form\Fr_beranda.Designer.vb">
+    <Compile Include="C_database.vb" />
+    <Compile Include="Fr_beranda.Designer.vb">
       <DependentUpon>Fr_beranda.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_beranda.vb">
+    <Compile Include="Fr_beranda.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_kompetensi.Designer.vb">
+    <Compile Include="Fr_kompetensi.Designer.vb">
       <DependentUpon>Fr_kompetensi.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_kompetensi.vb">
+    <Compile Include="Fr_kompetensi.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_hasiltes.Designer.vb">
+    <Compile Include="Fr_hasiltes.Designer.vb">
       <DependentUpon>Fr_hasiltes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_hasiltes.vb">
+    <Compile Include="Fr_hasiltes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_olahJurusan.Designer.vb">
-      <DependentUpon>Fr_olahJurusan.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form\Fr_olahJurusan.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\Fr_Subkriteria.Designer.vb">
+    <Compile Include="Fr_Subkriteria.Designer.vb">
       <DependentUpon>Fr_Subkriteria.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_Subkriteria.vb">
+    <Compile Include="Fr_Subkriteria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_kriteria.Designer.vb">
+    <Compile Include="Fr_kriteria.Designer.vb">
       <DependentUpon>Fr_kriteria.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_kriteria.vb">
+    <Compile Include="Fr_kriteria.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_login.vb">
+    <Compile Include="Fr_login.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_login.Designer.vb">
+    <Compile Include="Fr_login.Designer.vb">
       <DependentUpon>Fr_login.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_pembobotan.Designer.vb">
+    <Compile Include="Fr_pembobotan.Designer.vb">
       <DependentUpon>Fr_pembobotan.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_pembobotan.vb">
+    <Compile Include="Fr_pembobotan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_siswa.Designer.vb">
+    <Compile Include="Fr_siswa.Designer.vb">
       <DependentUpon>Fr_siswa.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_siswa.vb">
+    <Compile Include="Fr_siswa.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Fr_Subkompetensi.Designer.vb">
+    <Compile Include="Fr_Subkompetensi.Designer.vb">
       <DependentUpon>Fr_Subkompetensi.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_Subkompetensi.vb">
+    <Compile Include="Fr_Subkompetensi.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_file\Hasil.Designer.vb">
+    <Compile Include="Hasil.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Hasil.xsd</DependentUpon>
     </Compile>
-    <Compile Include="App_file\Hasil.vb">
+    <Compile Include="Hasil.vb">
       <DependentUpon>Hasil.xsd</DependentUpon>
     </Compile>
-    <Compile Include="App_file\Laporan.vb">
+    <Compile Include="Laporan.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Laporan.rpt</DependentUpon>
@@ -241,45 +235,42 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Form\Fr_SAW.Designer.vb">
+    <Compile Include="Fr_SAW.Designer.vb">
       <DependentUpon>Fr_SAW.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form\Fr_SAW.vb">
+    <Compile Include="Fr_SAW.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form\Fr_beranda.resx">
+    <EmbeddedResource Include="Fr_beranda.resx">
       <DependentUpon>Fr_beranda.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_kompetensi.resx">
+    <EmbeddedResource Include="Fr_kompetensi.resx">
       <DependentUpon>Fr_kompetensi.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_hasiltes.resx">
+    <EmbeddedResource Include="Fr_hasiltes.resx">
       <DependentUpon>Fr_hasiltes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_olahJurusan.resx">
-      <DependentUpon>Fr_olahJurusan.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_Subkriteria.resx">
+    <EmbeddedResource Include="Fr_Subkriteria.resx">
       <DependentUpon>Fr_Subkriteria.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_kriteria.resx">
+    <EmbeddedResource Include="Fr_kriteria.resx">
       <DependentUpon>Fr_kriteria.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_login.resx">
+    <EmbeddedResource Include="Fr_login.resx">
       <DependentUpon>Fr_login.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_pembobotan.resx">
+    <EmbeddedResource Include="Fr_pembobotan.resx">
       <DependentUpon>Fr_pembobotan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_siswa.resx">
+    <EmbeddedResource Include="Fr_siswa.resx">
       <DependentUpon>Fr_siswa.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_Subkompetensi.resx">
+    <EmbeddedResource Include="Fr_Subkompetensi.resx">
       <DependentUpon>Fr_Subkompetensi.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_file\Laporan.rpt">
+    <EmbeddedResource Include="Laporan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Laporan.vb</LastGenOutput>
     </EmbeddedResource>
@@ -290,20 +281,20 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Fr_SAW.resx">
+    <EmbeddedResource Include="Fr_SAW.resx">
       <DependentUpon>Fr_SAW.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_file\Hasil.xsc">
+    <None Include="Hasil.xsc">
       <DependentUpon>Hasil.xsd</DependentUpon>
     </None>
-    <None Include="App_file\Hasil.xsd">
+    <None Include="Hasil.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Hasil.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="App_file\Hasil.xss">
+    <None Include="Hasil.xss">
       <DependentUpon>Hasil.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />
@@ -323,10 +314,10 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_file\logo.jpg" />
+    <None Include="logo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_file\bg.jpg" />
+    <None Include="bg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

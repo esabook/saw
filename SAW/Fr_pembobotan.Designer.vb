@@ -258,7 +258,9 @@ Partial Class Fr_pembobotan
         Me.Controls.Add(Me.b_sp)
         Me.Controls.Add(Me.dgSk)
         Me.Name = "Fr_pembobotan"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Pembobotan Kriteria "
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgK, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgSk, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()

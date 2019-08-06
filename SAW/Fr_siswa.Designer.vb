@@ -48,18 +48,18 @@ Partial Class Fr_siswa
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.thn = New System.Windows.Forms.NumericUpDown()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.pr = New System.Windows.Forms.NumericUpDown()
+        Me.peringkat = New System.Windows.Forms.NumericUpDown()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.tahun_ajaran = New System.Windows.Forms.NumericUpDown()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         CType(Me.dgV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.thn, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pr, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.peringkat, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tahun_ajaran, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -166,7 +166,7 @@ Partial Class Fr_siswa
         '
         Me.s_sp.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.s_sp.ForeColor = System.Drawing.Color.White
-        Me.s_sp.Location = New System.Drawing.Point(142, 316)
+        Me.s_sp.Location = New System.Drawing.Point(142, 317)
         Me.s_sp.Name = "s_sp"
         Me.s_sp.Size = New System.Drawing.Size(77, 96)
         Me.s_sp.TabIndex = 12
@@ -177,7 +177,7 @@ Partial Class Fr_siswa
         '
         Me.s_hps.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.s_hps.ForeColor = System.Drawing.Color.White
-        Me.s_hps.Location = New System.Drawing.Point(11, 416)
+        Me.s_hps.Location = New System.Drawing.Point(11, 417)
         Me.s_hps.Name = "s_hps"
         Me.s_hps.Size = New System.Drawing.Size(125, 46)
         Me.s_hps.TabIndex = 11
@@ -188,7 +188,7 @@ Partial Class Fr_siswa
         '
         Me.s_ubh.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.s_ubh.ForeColor = System.Drawing.Color.White
-        Me.s_ubh.Location = New System.Drawing.Point(11, 367)
+        Me.s_ubh.Location = New System.Drawing.Point(11, 368)
         Me.s_ubh.Name = "s_ubh"
         Me.s_ubh.Size = New System.Drawing.Size(125, 43)
         Me.s_ubh.TabIndex = 10
@@ -199,7 +199,7 @@ Partial Class Fr_siswa
         '
         Me.s_tbh.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.s_tbh.ForeColor = System.Drawing.Color.White
-        Me.s_tbh.Location = New System.Drawing.Point(11, 316)
+        Me.s_tbh.Location = New System.Drawing.Point(11, 317)
         Me.s_tbh.Name = "s_tbh"
         Me.s_tbh.Size = New System.Drawing.Size(125, 45)
         Me.s_tbh.TabIndex = 9
@@ -220,7 +220,7 @@ Partial Class Fr_siswa
         Me.dgV.ReadOnly = True
         Me.dgV.RowHeadersVisible = False
         Me.dgV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgV.Size = New System.Drawing.Size(604, 393)
+        Me.dgV.Size = New System.Drawing.Size(624, 441)
         Me.dgV.TabIndex = 8
         '
         'Label7
@@ -260,7 +260,7 @@ Partial Class Fr_siswa
         '
         Me.s_reset.BackColor = System.Drawing.Color.FromArgb(CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(54, Byte), Integer))
         Me.s_reset.ForeColor = System.Drawing.Color.White
-        Me.s_reset.Location = New System.Drawing.Point(142, 418)
+        Me.s_reset.Location = New System.Drawing.Point(142, 419)
         Me.s_reset.Name = "s_reset"
         Me.s_reset.Size = New System.Drawing.Size(77, 44)
         Me.s_reset.TabIndex = 13
@@ -279,22 +279,22 @@ Partial Class Fr_siswa
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(865, 440)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(885, 488)
         Me.TableLayoutPanel1.TabIndex = 27
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.ColumnCount = 1
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.Panel2, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.dgV, 0, 1)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(252, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 2
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.29493!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.70507!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(610, 434)
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(630, 482)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'Panel2
@@ -308,7 +308,7 @@ Partial Class Fr_siswa
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(604, 29)
+        Me.Panel2.Size = New System.Drawing.Size(624, 29)
         Me.Panel2.TabIndex = 0
         '
         'Panel1
@@ -316,9 +316,9 @@ Partial Class Fr_siswa
         Me.Panel1.AutoScroll = True
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(247, Byte), Integer), CType(CType(245, Byte), Integer))
         Me.Panel1.Controls.Add(Me.Label10)
-        Me.Panel1.Controls.Add(Me.pr)
+        Me.Panel1.Controls.Add(Me.peringkat)
         Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Controls.Add(Me.thn)
+        Me.Panel1.Controls.Add(Me.tahun_ajaran)
         Me.Panel1.Controls.Add(Me.Panel3)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.s_reset)
@@ -340,8 +340,42 @@ Partial Class Fr_siswa
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(243, 434)
+        Me.Panel1.Size = New System.Drawing.Size(243, 482)
         Me.Panel1.TabIndex = 1
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(12, 281)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(52, 13)
+        Me.Label10.TabIndex = 18
+        Me.Label10.Text = "Peringkat"
+        '
+        'peringkat
+        '
+        Me.peringkat.Location = New System.Drawing.Point(142, 275)
+        Me.peringkat.Name = "peringkat"
+        Me.peringkat.Size = New System.Drawing.Size(78, 20)
+        Me.peringkat.TabIndex = 17
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(10, 244)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(71, 13)
+        Me.Label9.TabIndex = 16
+        Me.Label9.Text = "Tahun Ajaran"
+        '
+        'tahun_ajaran
+        '
+        Me.tahun_ajaran.Location = New System.Drawing.Point(85, 241)
+        Me.tahun_ajaran.Maximum = New Decimal(New Integer() {9999999, 0, 0, 0})
+        Me.tahun_ajaran.Name = "tahun_ajaran"
+        Me.tahun_ajaran.Size = New System.Drawing.Size(135, 20)
+        Me.tahun_ajaran.TabIndex = 15
+        Me.tahun_ajaran.Value = New Decimal(New Integer() {2016, 0, 0, 0})
         '
         'Panel3
         '
@@ -350,50 +384,16 @@ Partial Class Fr_siswa
         Me.Panel3.Size = New System.Drawing.Size(17, 72)
         Me.Panel3.TabIndex = 14
         '
-        'thn
-        '
-        Me.thn.Location = New System.Drawing.Point(84, 237)
-        Me.thn.Maximum = New Decimal(New Integer() {3010, 0, 0, 0})
-        Me.thn.Minimum = New Decimal(New Integer() {2010, 0, 0, 0})
-        Me.thn.Name = "thn"
-        Me.thn.Size = New System.Drawing.Size(120, 20)
-        Me.thn.TabIndex = 15
-        Me.thn.Value = New Decimal(New Integer() {2010, 0, 0, 0})
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(12, 241)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(38, 13)
-        Me.Label9.TabIndex = 16
-        Me.Label9.Text = "Tahun"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(12, 267)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(52, 13)
-        Me.Label10.TabIndex = 18
-        Me.Label10.Text = "Peringkat"
-        '
-        'pr
-        '
-        Me.pr.Location = New System.Drawing.Point(84, 265)
-        Me.pr.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
-        Me.pr.Name = "pr"
-        Me.pr.Size = New System.Drawing.Size(120, 20)
-        Me.pr.TabIndex = 17
-        '
         'Fr_siswa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(865, 440)
+        Me.ClientSize = New System.Drawing.Size(885, 488)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "Fr_siswa"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Data Siswa "
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgV, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
@@ -401,8 +401,8 @@ Partial Class Fr_siswa
         Me.Panel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.thn, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pr, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.peringkat, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tahun_ajaran, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -435,7 +435,7 @@ Partial Class Fr_siswa
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label10 As Label
-    Friend WithEvents pr As NumericUpDown
+    Friend WithEvents peringkat As NumericUpDown
     Friend WithEvents Label9 As Label
-    Friend WithEvents thn As NumericUpDown
+    Friend WithEvents tahun_ajaran As NumericUpDown
 End Class

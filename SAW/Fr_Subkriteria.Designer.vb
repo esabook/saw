@@ -31,10 +31,6 @@ Partial Class Fr_subkriteria
         Me.dgSk = New System.Windows.Forms.DataGridView()
         Me.k_btl = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.rak = New System.Windows.Forms.NumericUpDown()
-        Me.raw = New System.Windows.Forms.NumericUpDown()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.k_nm = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -60,8 +56,6 @@ Partial Class Fr_subkriteria
         CType(Me.dgK, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgSk, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.rak, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.raw, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.sk_nil, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -121,7 +115,7 @@ Partial Class Fr_subkriteria
         Me.dgK.AllowUserToAddRows = False
         Me.dgK.AllowUserToDeleteRows = False
         Me.dgK.AllowUserToResizeRows = False
-        Me.dgK.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgK.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgK.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(245, Byte), Integer))
         Me.dgK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgK.Dock = System.Windows.Forms.DockStyle.Fill
@@ -165,10 +159,6 @@ Partial Class Fr_subkriteria
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label9)
-        Me.GroupBox1.Controls.Add(Me.rak)
-        Me.GroupBox1.Controls.Add(Me.raw)
-        Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.k_nm)
         Me.GroupBox1.Controls.Add(Me.k_btl)
@@ -189,42 +179,6 @@ Partial Class Fr_subkriteria
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(288, 123)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(10, 13)
-        Me.Label9.TabIndex = 19
-        Me.Label9.Text = "-"
-        '
-        'rak
-        '
-        Me.rak.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.rak.Location = New System.Drawing.Point(304, 119)
-        Me.rak.Name = "rak"
-        Me.rak.Size = New System.Drawing.Size(69, 20)
-        Me.rak.TabIndex = 18
-        Me.rak.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'raw
-        '
-        Me.raw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.raw.Location = New System.Drawing.Point(196, 119)
-        Me.raw.Name = "raw"
-        Me.raw.Size = New System.Drawing.Size(79, 20)
-        Me.raw.TabIndex = 17
-        Me.raw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(73, 123)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(117, 13)
-        Me.Label6.TabIndex = 16
-        Me.Label6.Text = "Nilai rentang awal-akhir"
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -237,9 +191,9 @@ Partial Class Fr_subkriteria
         'k_nm
         '
         Me.k_nm.Enabled = False
-        Me.k_nm.Location = New System.Drawing.Point(196, 66)
+        Me.k_nm.Location = New System.Drawing.Point(177, 66)
         Me.k_nm.Name = "k_nm"
-        Me.k_nm.Size = New System.Drawing.Size(177, 20)
+        Me.k_nm.Size = New System.Drawing.Size(196, 20)
         Me.k_nm.TabIndex = 14
         '
         'Label5
@@ -253,15 +207,15 @@ Partial Class Fr_subkriteria
         '
         'sk_nm
         '
-        Me.sk_nm.Location = New System.Drawing.Point(196, 93)
+        Me.sk_nm.Location = New System.Drawing.Point(177, 93)
         Me.sk_nm.Name = "sk_nm"
-        Me.sk_nm.Size = New System.Drawing.Size(177, 20)
+        Me.sk_nm.Size = New System.Drawing.Size(196, 20)
         Me.sk_nm.TabIndex = 12
         '
         'sk_nil
         '
         Me.sk_nil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.sk_nil.Location = New System.Drawing.Point(196, 145)
+        Me.sk_nil.Location = New System.Drawing.Point(177, 122)
         Me.sk_nil.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.sk_nil.Name = "sk_nil"
         Me.sk_nil.Size = New System.Drawing.Size(79, 20)
@@ -271,7 +225,7 @@ Partial Class Fr_subkriteria
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(73, 147)
+        Me.Label4.Location = New System.Drawing.Point(72, 127)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(91, 13)
         Me.Label4.TabIndex = 10
@@ -290,9 +244,9 @@ Partial Class Fr_subkriteria
         '
         Me.sk_id.BackColor = System.Drawing.Color.White
         Me.sk_id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.sk_id.Location = New System.Drawing.Point(196, 37)
+        Me.sk_id.Location = New System.Drawing.Point(177, 37)
         Me.sk_id.Name = "sk_id"
-        Me.sk_id.Size = New System.Drawing.Size(177, 21)
+        Me.sk_id.Size = New System.Drawing.Size(196, 21)
         Me.sk_id.TabIndex = 5
         Me.sk_id.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -372,8 +326,8 @@ Partial Class Fr_subkriteria
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 309.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel4, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -471,8 +425,6 @@ Partial Class Fr_subkriteria
         CType(Me.dgSk, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.rak, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.raw, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.sk_nil, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -518,8 +470,4 @@ Partial Class Fr_subkriteria
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Friend WithEvents Label2 As Label
     Friend WithEvents k_nm As TextBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents rak As NumericUpDown
-    Friend WithEvents raw As NumericUpDown
-    Friend WithEvents Label6 As Label
 End Class

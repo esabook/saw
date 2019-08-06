@@ -37,7 +37,6 @@ Partial Class Fr_beranda
         Me.PerhitunganSAWToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginJendelaBaruToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.olahJur = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -45,7 +44,7 @@ Partial Class Fr_beranda
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(190, Byte), Integer))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BidangToolStripMenuItem, Me.KriteriaToolStripMenuItem, Me.SiswaToolStripMenuItem, Me.PerhitunganSAWToolStripMenuItem, Me.LoginJendelaBaruToolStripMenuItem, Me.olahJur})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BidangToolStripMenuItem, Me.KriteriaToolStripMenuItem, Me.SiswaToolStripMenuItem, Me.PerhitunganSAWToolStripMenuItem, Me.LoginJendelaBaruToolStripMenuItem})
         Me.MenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -146,12 +145,6 @@ Partial Class Fr_beranda
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
-        'olahJur
-        '
-        Me.olahJur.Name = "olahJur"
-        Me.olahJur.Size = New System.Drawing.Size(87, 20)
-        Me.olahJur.Text = "Olah Jurusan"
-        '
         'Fr_beranda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -162,6 +155,7 @@ Partial Class Fr_beranda
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Fr_beranda"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Beranda "
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -186,5 +180,4 @@ Partial Class Fr_beranda
     Friend WithEvents DataSubKriteriaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents olahJur As ToolStripMenuItem
 End Class

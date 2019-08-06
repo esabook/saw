@@ -21,7 +21,6 @@
 
         Next
         b_reset.PerformClick()
-        ErrorProvider1.SetError(total, "Apabila nilai ini telah Mencapai bobot maksimal (100), nilai tidak dapat ditambah.")
 
     End Sub
     Private Sub fillnilai()
@@ -63,6 +62,18 @@
 
     Private Sub NumericUpDown1_Leave(sender As Object, e As EventArgs) Handles NumericUpDown1.Leave
         If NumericUpDown1.Value > val Then NumericUpDown1.Value = val
+    End Sub
+
+    Private Sub total_TextChanged(sender As Object, e As EventArgs) Handles total.TextChanged
+        Try
+            If Integer.Parse(total.Text) < 100 Then
+                ErrorProvider1.SetError(total, "Total nilai belum mencapai bobot maksimal (100)")
+            Else
+                ErrorProvider1.Clear()
+            End If
+        Catch
+        End Try
+
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles b_reset.Click

@@ -118,7 +118,7 @@ Partial Class Fr_kriteria
         Me.dgK.AllowUserToAddRows = False
         Me.dgK.AllowUserToDeleteRows = False
         Me.dgK.AllowUserToResizeRows = False
-        Me.dgK.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgK.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.dgK.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(245, Byte), Integer))
         Me.dgK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgK.Dock = System.Windows.Forms.DockStyle.Fill
@@ -247,6 +247,8 @@ Partial Class Fr_kriteria
         Me.dgSk.Name = "dgSk"
         Me.dgSk.ReadOnly = True
         Me.dgSk.RowHeadersVisible = False
+        Me.dgSk.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.White
+        Me.dgSk.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black
         Me.dgSk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgSk.Size = New System.Drawing.Size(473, 177)
         Me.dgSk.TabIndex = 7
@@ -258,7 +260,7 @@ Partial Class Fr_kriteria
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.FromArgb(CType(CType(188, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(190, Byte), Integer))
+        Me.Label2.BackColor = System.Drawing.Color.DarkGray
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label2.Location = New System.Drawing.Point(3, 66)
@@ -277,26 +279,27 @@ Partial Class Fr_kriteria
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(473, 20)
         Me.Label4.TabIndex = 18
-        Me.Label4.Text = "Tabel Data Sub Kriteria yang terhubung"
+        Me.Label4.Text = "Tabel Data Sub Kriteria yang terhubung (Read Only)"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.2439!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.7561!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(820, 476)
         Me.TableLayoutPanel1.TabIndex = 19
         '
         'TableLayoutPanel2
         '
+        Me.TableLayoutPanel2.BackColor = System.Drawing.Color.Silver
         Me.TableLayoutPanel2.ColumnCount = 1
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.Panel2, 0, 0)
@@ -315,7 +318,7 @@ Partial Class Fr_kriteria
         '
         'Panel2
         '
-        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(247, Byte), Integer), CType(CType(245, Byte), Integer))
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.filter2)
         Me.Panel2.Controls.Add(Me.filter1)
@@ -378,6 +381,7 @@ Partial Class Fr_kriteria
         '
         'ket
         '
+        Me.ket.BackColor = System.Drawing.Color.Gold
         Me.ket.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ket.FormattingEnabled = True
         Me.ket.Location = New System.Drawing.Point(0, 0)
@@ -433,7 +437,9 @@ Partial Class Fr_kriteria
         Me.ClientSize = New System.Drawing.Size(820, 476)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "Fr_kriteria"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Kriteria "
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.dgK, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
