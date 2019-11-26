@@ -118,10 +118,6 @@
 
     End Sub
 
-    Private Sub tx(sender As Object, e As KeyPressEventArgs) Handles bd_sbid.KeyPress
-
-    End Sub
-
     Private Sub bd_batal_Click(sender As Object, e As EventArgs) Handles bd_batal.Click
         edit(False)
         cl()

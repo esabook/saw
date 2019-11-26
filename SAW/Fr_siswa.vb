@@ -42,6 +42,8 @@
         Dim nis = s_nis.Text.Length > 0 AndAlso s_nm.Text.Length > 0 AndAlso s_alm.Text.Length > 0 AndAlso s_jk.Text.Length > 0 AndAlso s_kls.Text.Length > 0
         If Not nis Then MessageBox.Show("Silakan isi formulir dahulu.") : Return
         If kej.Enabled AndAlso kej.Text.Length < 1 Then MessageBox.Show("Silakan pilih kompetensi dahulu.") : Return
+        Dim kompetensi = kej.Text.Replace(separator, "-").Split("-")(0)
+
         Select Case md
             Case Mode.Baru
                 If db.QueryTable("select * from siswa where nis='" + s_nis.Text + "'").Rows.Count = 0 Then
@@ -51,7 +53,7 @@
                         s_nm.Text + "','" +
                         s_alm.Text + "','" +
                         s_jk.Text + "','" +
-                        IIf(kej.Enabled, kej.Text, dt(0)) + "','" +
+                        IIf(kej.Enabled, kompetensi, dt(0)) + "','" +
                         s_kls.Text + "','" +
                         tahun_ajaran.Value.ToString + "','" +
                         peringkat.Value.ToString + "')")
@@ -62,7 +64,7 @@
                 db.QueryIUD("update siswa set nama='" + s_nm.Text +
                             "', alamat='" + s_alm.Text +
                             "', kelamin='" + s_jk.Text +
-                            "', kode_kompetensi='" + IIf(kej.Enabled, kej.Text, dt(0)) +
+                            "', kode_kompetensi='" + IIf(kej.Enabled, kompetensi, dt(0)) +
                             "', kelas='" + s_kls.Text +
                             "', tahun_ajaran='" + tahun_ajaran.Value.ToString +
                             "', peringkat='" + peringkat.Value.ToString +
@@ -95,10 +97,18 @@
         s_nm.Text = dgV.CurrentRow.Cells(1).Value
         s_alm.Text = dgV.CurrentRow.Cells(2).Value
         s_jk.Text = dgV.CurrentRow.Cells(3).Value
-        kej.Text = dgV.CurrentRow.Cells(4).Value
+
         s_kls.Text = dgV.CurrentRow.Cells(5).Value
         tahun_ajaran.Value = IIf(IsDBNull(dgV.CurrentRow.Cells(6).Value), Now.Year, dgV.CurrentRow.Cells(6).Value)
         peringkat.Value = IIf(IsDBNull(dgV.CurrentRow.Cells(7).Value), 0, dgV.CurrentRow.Cells(7).Value)
+
+        Dim kompetensi = dgV.CurrentRow.Cells(4).Value
+        For Each s As String In kej.Items
+            If s.Contains(kompetensi) Then
+                kej.SelectedItem = s
+                Exit For
+            End If
+        Next
     End Sub
 
     Private Sub modeedit(boo As Boolean)
@@ -122,9 +132,9 @@
 
     End Sub
 
-    Private Sub s_jk_SelectedIndexChanged(sender As Object, e As EventArgs) Handles kej.Leave
-        kej.Text = kej.Text.Replace(separator, "-").Split("-")(0)
-    End Sub
+    'Private Sub s_jk_SelectedIndexChanged(sender As Object, e As EventArgs) Handles kej.Leave
+    '   kej.Text = kej.Text.Replace(separator, "-").Split("-")(0)
+    'End Sub
 
     'Private Sub skej_Leave(sender As Object, e As EventArgs)
     '    skej.Text = skej.Text.Replace(separator, "-").Split("-")(0)
@@ -157,7 +167,9 @@
         ElseIf isiFilter IsNot Nothing Then
             ass &= "instr (nis&nama&alamat&kode_kompetensi&kelas,'" + isiFilter + "')<>0 and "
         End If
-        Return "select  s.* from siswa as s where " + ass +
+        Return "select distinct s.* from siswa as s inner join
+kompetensi as k on s.kode_kompetensi=k.id_kompetensi or s.kode_kompetensi=k.kode_jurusan
+where " + ass +
                                       " (s.kode_kompetensi='" & jurusan & "' " +
                                       "or s.kode_kompetensi=(select id_kompetensi from kompetensi as k where k.id_kompetensi=s.kode_kompetensi and k.kode_jurusan='" & jurusan & "'))"
 

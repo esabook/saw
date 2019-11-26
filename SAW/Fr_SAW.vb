@@ -10,36 +10,40 @@ Public Class Fr_SAW
     Dim k As ArrayList
     Dim header As SortedList
     Dim headerName As SortedList
-    Dim s As String, t As String
+    Dim s As String, t As String, idKompetensi As String
     Public dt() As Object
 
-    Public Sub setFilter(ByRef tahunMin As Double, ByRef tahunMax As Double, ByRef peringkat As Double)
+    Public Sub setFilter(ByRef tahunMin As Double, ByRef tahunMax As Double, ByRef peringkat As Double, ByRef id_kompetensi As String)
         i_tahun_min.Value = tahunMin
         i_tahun_max.Value = tahunMax
         i_peringkat.Value = peringkat
+        idKompetensi = id_kompetensi
     End Sub
 
     Public Sub showFilter(ByRef bool As Boolean)
         panel_filter.Visible = bool
     End Sub
     Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton6.CheckedChanged, RadioButton4.CheckedChanged, RadioButton2.CheckedChanged, RadioButton1.CheckedChanged
-
+        If Not sender.Checked Then Exit Sub
         dgview.DataSource = Nothing
 
         'Try
         Select Case sender.name
             Case RadioButton1.Name
                 dgview.DataSource = mx_awal_nilaiHasil
+                Exit Select
 
             Case RadioButton2.Name
-
                 dgview.DataSource = mx_awal_bobotHasil
+                Exit Select
 
             Case RadioButton4.Name
                 dgview.DataSource = mx_normalisasiMax
-
+                Exit Select
             Case RadioButton6.Name
                 dgview.DataSource = mx_hasilAkhir
+                Exit Select
+
 
         End Select
         'Catch
@@ -69,6 +73,7 @@ Public Class Fr_SAW
         For i = 0 To j
             dgview.Columns.Item(i).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Next
+
         For head = 0 To header.Count - 1
             Dim jumlahChildKolom = header.GetByIndex(head)
 
@@ -136,6 +141,15 @@ Public Class Fr_SAW
             Next
 
         Next
+        If idKompetensi IsNot Nothing Then
+            For Each s As String In kom.Items
+                If s.Contains(idKompetensi) Then
+                    kom.SelectedItem = s
+                    Exit For
+                End If
+            Next
+        End If
+
     End Sub
 
     Private Sub Fr_SAW_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -173,9 +187,8 @@ Public Class Fr_SAW
         reset()
 
         If kom.SelectedItem Is Nothing Then
-
-            s = kom.Items.Item(0).ToString.Replace(" > ", "").Split(" - ")(0)
-            t = kom.Items.Item(0).ToString.Replace(" > ", "").Split("- ")(1)
+            kom.SetSelected(0, True)
+            Exit Sub
 
         Else
 
@@ -213,12 +226,14 @@ Public Class Fr_SAW
         Next
 
         awal()
-        kat_r()
+
+
         RadioButton1.Checked = True
         RadioButton1.Enabled = True
         RadioButton2.Enabled = True
         RadioButton1_CheckedChanged(RadioButton1, Nothing)
     End Sub
+
 
     Private Function getnameKompetensi(v As Object) As Object
         If v.ToString.Contains(db.awalan_PKkompetensi) Then
@@ -253,6 +268,7 @@ Public Class Fr_SAW
 
     End Function
 
+
     Private Sub awal()
         Dim batasAtasPeringkat = i_peringkat.Value.ToString,
             tahunMin = i_tahun_min.Value.ToString,
@@ -267,6 +283,8 @@ Public Class Fr_SAW
                                                                    " where (peringkat between 0 and " + batasAtasPeringkat + " and tahun_ajaran between " + tahunMin + " and " + tahunMax + " )
                                                                    and (s.kode_kompetensi=" + stringbcnfsub("s.kode_kompetensi") + " or s.kode_kompetensi='" + s + "')"))
         End If
+
+        kat_r()
     End Sub
 
     Private Sub dgview_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles dgview.Validating
@@ -314,6 +332,7 @@ Public Class Fr_SAW
         End Try
     End Sub
 
+
     Private Sub kat_r()
         mx_awal_bobotHasil = mx_awal_nilaiHasil.Copy
 
@@ -334,7 +353,6 @@ Public Class Fr_SAW
             mx_awal_nilaiHasil.Columns.Item(kolom).ColumnName = IIf(mx_awal_nilaiHasil.Columns.IndexOf(nm) > 0, nm + "_" & kolom, nm)
             mx_awal_bobotHasil.Columns.Item(kolom).ColumnName = IIf(mx_awal_bobotHasil.Columns.IndexOf(nm) > 0, nm + "_" & kolom, nm)
         Next
-
     End Sub
 
     Private Sub v()

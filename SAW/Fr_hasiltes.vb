@@ -12,6 +12,7 @@
     End Sub
     Private Sub isisiswa()
         cl()
+        kom.ClearSelected()
         Try
             tbs.DataSource = db.QueryDS(sw.siswa(dt(0)) & " and (peringkat between 0 and " & i_peringkat.Value & " and tahun_ajaran between " & tahun1.Value & " and " & tahun2.Value & ")")
 
@@ -174,9 +175,6 @@
             "' or '" + bcnf + "'=(select k.id_kompetensi from kompetensi as k inner join sub_kompetensi as s on s.id_kompetensi=k.id_kompetensi where s.id_sub_kompetensi=kr.bcnf and k.id_kompetensi=s.id_kompetensi)"
     End Function
 
-    Private Sub SplitContainer1_SplitterMoved(sender As Object, e As SplitterEventArgs)
-
-    End Sub
 
     Private Sub Tahun1_ValueChanged(sender As Object, e As EventArgs) Handles tahun1.ValueChanged
         tahun2.Minimum = tahun1.Value
@@ -202,7 +200,12 @@
         Dim f As New Fr_SAW
         f.dt = dt
         f.MdiParent = Me.MdiParent
-        f.setFilter(tahun1.Value, tahun2.Value, i_peringkat.Value)
+        If kom.SelectedItem IsNot Nothing Then
+            Dim sel = kom.SelectedItem.ToString.Replace(" > ", "").Split(" - ")(0)
+            f.setFilter(tahun1.Value, tahun2.Value, i_peringkat.Value, sel)
+        Else
+            f.setFilter(tahun1.Value, tahun2.Value, i_peringkat.Value, Nothing)
+        End If
         f.showFilter(False)
         f.Show()
     End Sub
@@ -224,6 +227,7 @@
 
 
     Private Sub kom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles kom.SelectedIndexChanged
+        If kom.SelectedItem = Nothing Then Exit Sub
         Dim sel = kom.SelectedItem.ToString.Replace(" > ", "").Split(" - ")(0)
         If modeISI Then
             Try
@@ -242,7 +246,7 @@
                 End If
                 isiTabelKriteria(sel)
                 isinilaikriteria()
-                Catch
+            Catch
             End Try
 
         Else
@@ -255,7 +259,7 @@
             tbs.DataSource = db.QueryDS(sw.siswa(dt(0)) & " and (peringkat between 0 and " & i_peringkat.Value & " and tahun_ajaran between " & tahun1.Value & " and " & tahun2.Value & ") and kode_kompetensi= '" & sel & "'")
         End If
 
-            End Sub
+    End Sub
 
     Private Sub nil_kat_Leave(sender As Object, e As EventArgs) Handles nil_kat.SelectedIndexChanged
         Try

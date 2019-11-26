@@ -129,6 +129,7 @@ Public Class C_database
             s = dr(0)
         End If
         close()
+
         Return s
     End Function
     Private Function open() As OleDbConnection

@@ -73,7 +73,7 @@ Partial Class Fr_subkriteria
         Me.k_tbh.Location = New System.Drawing.Point(392, 35)
         Me.k_tbh.Name = "k_tbh"
         Me.k_tbh.Size = New System.Drawing.Size(175, 38)
-        Me.k_tbh.TabIndex = 0
+        Me.k_tbh.TabIndex = 4
         Me.k_tbh.Text = "Tambah"
         Me.k_tbh.UseVisualStyleBackColor = False
         '
@@ -84,7 +84,7 @@ Partial Class Fr_subkriteria
         Me.k_ubh.Location = New System.Drawing.Point(392, 77)
         Me.k_ubh.Name = "k_ubh"
         Me.k_ubh.Size = New System.Drawing.Size(86, 37)
-        Me.k_ubh.TabIndex = 1
+        Me.k_ubh.TabIndex = 5
         Me.k_ubh.Text = "Ubah"
         Me.k_ubh.UseVisualStyleBackColor = False
         '
@@ -95,7 +95,7 @@ Partial Class Fr_subkriteria
         Me.k_hps.Location = New System.Drawing.Point(481, 77)
         Me.k_hps.Name = "k_hps"
         Me.k_hps.Size = New System.Drawing.Size(86, 36)
-        Me.k_hps.TabIndex = 2
+        Me.k_hps.TabIndex = 6
         Me.k_hps.Text = "Hapus"
         Me.k_hps.UseVisualStyleBackColor = False
         '
@@ -106,7 +106,7 @@ Partial Class Fr_subkriteria
         Me.k_sp.Location = New System.Drawing.Point(392, 118)
         Me.k_sp.Name = "k_sp"
         Me.k_sp.Size = New System.Drawing.Size(86, 34)
-        Me.k_sp.TabIndex = 3
+        Me.k_sp.TabIndex = 7
         Me.k_sp.Text = "Simpan"
         Me.k_sp.UseVisualStyleBackColor = False
         '
@@ -126,7 +126,7 @@ Partial Class Fr_subkriteria
         Me.dgK.RowHeadersVisible = False
         Me.dgK.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgK.Size = New System.Drawing.Size(291, 413)
-        Me.dgK.TabIndex = 4
+        Me.dgK.TabIndex = 1
         '
         'dgSk
         '
@@ -144,7 +144,7 @@ Partial Class Fr_subkriteria
         Me.dgSk.RowHeadersVisible = False
         Me.dgSk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgSk.Size = New System.Drawing.Size(594, 315)
-        Me.dgSk.TabIndex = 7
+        Me.dgSk.TabIndex = 0
         '
         'k_btl
         '
@@ -153,7 +153,7 @@ Partial Class Fr_subkriteria
         Me.k_btl.Location = New System.Drawing.Point(481, 119)
         Me.k_btl.Name = "k_btl"
         Me.k_btl.Size = New System.Drawing.Size(86, 34)
-        Me.k_btl.TabIndex = 4
+        Me.k_btl.TabIndex = 8
         Me.k_btl.Text = "Batal"
         Me.k_btl.UseVisualStyleBackColor = False
         '
@@ -194,7 +194,7 @@ Partial Class Fr_subkriteria
         Me.k_nm.Location = New System.Drawing.Point(177, 66)
         Me.k_nm.Name = "k_nm"
         Me.k_nm.Size = New System.Drawing.Size(196, 20)
-        Me.k_nm.TabIndex = 14
+        Me.k_nm.TabIndex = 1
         '
         'Label5
         '
@@ -210,7 +210,7 @@ Partial Class Fr_subkriteria
         Me.sk_nm.Location = New System.Drawing.Point(177, 93)
         Me.sk_nm.Name = "sk_nm"
         Me.sk_nm.Size = New System.Drawing.Size(196, 20)
-        Me.sk_nm.TabIndex = 12
+        Me.sk_nm.TabIndex = 2
         '
         'sk_nil
         '
@@ -219,7 +219,7 @@ Partial Class Fr_subkriteria
         Me.sk_nil.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.sk_nil.Name = "sk_nil"
         Me.sk_nil.Size = New System.Drawing.Size(79, 20)
-        Me.sk_nil.TabIndex = 11
+        Me.sk_nil.TabIndex = 3
         Me.sk_nil.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label4
@@ -247,7 +247,7 @@ Partial Class Fr_subkriteria
         Me.sk_id.Location = New System.Drawing.Point(177, 37)
         Me.sk_id.Name = "sk_id"
         Me.sk_id.Size = New System.Drawing.Size(196, 21)
-        Me.sk_id.TabIndex = 5
+        Me.sk_id.TabIndex = 0
         Me.sk_id.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'kompetensi
@@ -256,7 +256,7 @@ Partial Class Fr_subkriteria
         Me.kompetensi.Location = New System.Drawing.Point(3, 15)
         Me.kompetensi.Name = "kompetensi"
         Me.kompetensi.Size = New System.Drawing.Size(86, 13)
-        Me.kompetensi.TabIndex = 6
+        Me.kompetensi.TabIndex = 2
         Me.kompetensi.Text = "Filter kompetensi"
         '
         'sk_bid
@@ -265,7 +265,7 @@ Partial Class Fr_subkriteria
         Me.sk_bid.Location = New System.Drawing.Point(7, 31)
         Me.sk_bid.Name = "sk_bid"
         Me.sk_bid.Size = New System.Drawing.Size(122, 21)
-        Me.sk_bid.TabIndex = 9
+        Me.sk_bid.TabIndex = 4
         '
         'Label1
         '
@@ -273,7 +273,7 @@ Partial Class Fr_subkriteria
         Me.Label1.Location = New System.Drawing.Point(141, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(108, 13)
-        Me.Label1.TabIndex = 15
+        Me.Label1.TabIndex = 3
         Me.Label1.Text = "Filter Sub kompetensi"
         '
         'sk_sb
@@ -282,7 +282,7 @@ Partial Class Fr_subkriteria
         Me.sk_sb.Location = New System.Drawing.Point(144, 31)
         Me.sk_sb.Name = "sk_sb"
         Me.sk_sb.Size = New System.Drawing.Size(141, 21)
-        Me.sk_sb.TabIndex = 16
+        Me.sk_sb.TabIndex = 0
         '
         'sk_reset
         '
@@ -291,7 +291,7 @@ Partial Class Fr_subkriteria
         Me.sk_reset.Location = New System.Drawing.Point(7, 58)
         Me.sk_reset.Name = "sk_reset"
         Me.sk_reset.Size = New System.Drawing.Size(278, 36)
-        Me.sk_reset.TabIndex = 15
+        Me.sk_reset.TabIndex = 1
         Me.sk_reset.Text = "Reset"
         Me.sk_reset.UseVisualStyleBackColor = False
         '
@@ -307,7 +307,7 @@ Partial Class Fr_subkriteria
         Me.Label7.Location = New System.Drawing.Point(3, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(291, 20)
-        Me.Label7.TabIndex = 19
+        Me.Label7.TabIndex = 0
         Me.Label7.Text = "Tabel Data Kriteria"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -380,7 +380,7 @@ Partial Class Fr_subkriteria
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(297, 94)
-        Me.Panel1.TabIndex = 1
+        Me.Panel1.TabIndex = 0
         '
         'TableLayoutPanel4
         '

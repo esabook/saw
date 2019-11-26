@@ -61,7 +61,7 @@ Partial Class Fr_Subkompetensi
         Me.Label7.Location = New System.Drawing.Point(47, 57)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(76, 13)
-        Me.Label7.TabIndex = 12
+        Me.Label7.TabIndex = 2
         Me.Label7.Text = "ID Kompetensi"
         '
         'bd_sbid
@@ -69,7 +69,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_sbid.Location = New System.Drawing.Point(174, 86)
         Me.bd_sbid.Name = "bd_sbid"
         Me.bd_sbid.Size = New System.Drawing.Size(257, 20)
-        Me.bd_sbid.TabIndex = 11
+        Me.bd_sbid.TabIndex = 5
         '
         'Label2
         '
@@ -77,7 +77,7 @@ Partial Class Fr_Subkompetensi
         Me.Label2.Location = New System.Drawing.Point(47, 90)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(114, 13)
-        Me.Label2.TabIndex = 10
+        Me.Label2.TabIndex = 4
         Me.Label2.Text = "Nama Sub-kompetensi"
         '
         'dgW
@@ -96,7 +96,7 @@ Partial Class Fr_Subkompetensi
         Me.dgW.RowHeadersVisible = False
         Me.dgW.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgW.Size = New System.Drawing.Size(578, 186)
-        Me.dgW.TabIndex = 16
+        Me.dgW.TabIndex = 1
         '
         'bd_batal
         '
@@ -105,7 +105,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_batal.Location = New System.Drawing.Point(356, 157)
         Me.bd_batal.Name = "bd_batal"
         Me.bd_batal.Size = New System.Drawing.Size(75, 34)
-        Me.bd_batal.TabIndex = 21
+        Me.bd_batal.TabIndex = 10
         Me.bd_batal.Text = "Batal"
         Me.bd_batal.UseVisualStyleBackColor = False
         '
@@ -116,7 +116,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_sp.Location = New System.Drawing.Point(255, 117)
         Me.bd_sp.Name = "bd_sp"
         Me.bd_sp.Size = New System.Drawing.Size(95, 74)
-        Me.bd_sp.TabIndex = 20
+        Me.bd_sp.TabIndex = 8
         Me.bd_sp.Text = "Simpan"
         Me.bd_sp.UseVisualStyleBackColor = False
         '
@@ -127,7 +127,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_hps.Location = New System.Drawing.Point(356, 117)
         Me.bd_hps.Name = "bd_hps"
         Me.bd_hps.Size = New System.Drawing.Size(75, 34)
-        Me.bd_hps.TabIndex = 19
+        Me.bd_hps.TabIndex = 9
         Me.bd_hps.Text = "Hapus"
         Me.bd_hps.UseVisualStyleBackColor = False
         '
@@ -138,7 +138,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_ubh.Location = New System.Drawing.Point(174, 157)
         Me.bd_ubh.Name = "bd_ubh"
         Me.bd_ubh.Size = New System.Drawing.Size(75, 34)
-        Me.bd_ubh.TabIndex = 18
+        Me.bd_ubh.TabIndex = 7
         Me.bd_ubh.Text = "Ubah"
         Me.bd_ubh.UseVisualStyleBackColor = False
         '
@@ -149,7 +149,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_tbh.Location = New System.Drawing.Point(174, 117)
         Me.bd_tbh.Name = "bd_tbh"
         Me.bd_tbh.Size = New System.Drawing.Size(75, 34)
-        Me.bd_tbh.TabIndex = 17
+        Me.bd_tbh.TabIndex = 6
         Me.bd_tbh.Text = "Tambah"
         Me.bd_tbh.UseVisualStyleBackColor = False
         '
@@ -169,7 +169,7 @@ Partial Class Fr_Subkompetensi
         Me.dgV.RowHeadersVisible = False
         Me.dgV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgV.Size = New System.Drawing.Size(396, 368)
-        Me.dgV.TabIndex = 22
+        Me.dgV.TabIndex = 1
         '
         'bd_idbid
         '
@@ -178,7 +178,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_idbid.Location = New System.Drawing.Point(174, 20)
         Me.bd_idbid.Name = "bd_idbid"
         Me.bd_idbid.Size = New System.Drawing.Size(257, 21)
-        Me.bd_idbid.TabIndex = 24
+        Me.bd_idbid.TabIndex = 1
         '
         'Label4
         '
@@ -186,7 +186,7 @@ Partial Class Fr_Subkompetensi
         Me.Label4.Location = New System.Drawing.Point(47, 23)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(97, 13)
-        Me.Label4.TabIndex = 23
+        Me.Label4.TabIndex = 0
         Me.Label4.Text = "ID Sub-kompetensi"
         '
         'ErrorProvider1
@@ -201,7 +201,7 @@ Partial Class Fr_Subkompetensi
         Me.Button1.Location = New System.Drawing.Point(3, 397)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(396, 36)
-        Me.Button1.TabIndex = 25
+        Me.Button1.TabIndex = 2
         Me.Button1.Text = "Refresh kompetensi"
         Me.Button1.UseVisualStyleBackColor = False
         '
@@ -213,7 +213,7 @@ Partial Class Fr_Subkompetensi
         Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(396, 20)
-        Me.Label1.TabIndex = 26
+        Me.Label1.TabIndex = 0
         Me.Label1.Text = "Tabel Data kompetensi"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -225,7 +225,7 @@ Partial Class Fr_Subkompetensi
         Me.Label3.Location = New System.Drawing.Point(3, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(578, 20)
-        Me.Label3.TabIndex = 27
+        Me.Label3.TabIndex = 0
         Me.Label3.Text = "Tabel Data Sub kompetensi"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -317,7 +317,7 @@ Partial Class Fr_Subkompetensi
         Me.bd_bid.Location = New System.Drawing.Point(174, 53)
         Me.bd_bid.Name = "bd_bid"
         Me.bd_bid.Size = New System.Drawing.Size(257, 20)
-        Me.bd_bid.TabIndex = 25
+        Me.bd_bid.TabIndex = 3
         '
         'Fr_Subkompetensi
         '
